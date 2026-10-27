@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro de Diabetes de Porto Alegre — v3</title>
+  <title>Registro de Diabetes de Porto Alegre</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --blue:       #2A6496;
       --blue-dark:  #1B4D72;
-      --blue-light: #4A90C4;
       --accent:     #3A8A6E;
       --bg:         #F8FAFB;
       --surface:    #FFFFFF;
@@ -23,7 +22,7 @@
       --max:        1180px;
       --radius:     6px;
       --shadow-sm:  0 1px 4px rgba(0,0,0,0.08);
-      --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+      --heading:    'Roboto', 'Inter', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -38,72 +37,40 @@
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* TOP NAV */
+    /* MENU SUPERIOR */
     #topnav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-h);
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       z-index: 100;
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       box-shadow: var(--shadow-sm);
     }
     .nav-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 28px;
-      width: 100%;
-      display: flex;
-      align-items: center;
+      max-width: var(--max); margin: 0 auto; padding: 0 28px;
+      width: 100%; display: flex; align-items: center;
     }
     .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-      margin-right: 36px;
-      cursor: pointer;
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0; margin-right: 36px; cursor: pointer;
     }
     .nav-brand-icon {
-      width: 34px; height: 34px;
-      background: var(--blue);
-      border-radius: 8px;
+      width: 34px; height: 34px; background: var(--blue); border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
     }
     .nav-brand-icon svg { width: 18px; height: 18px; fill: white; }
     .nav-brand-name {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .01em;
-      color: var(--blue-dark);
-      line-height: 1.25;
+      font-family: var(--heading);
+      font-size: 13px; font-weight: 700; color: var(--blue-dark); line-height: 1.25;
     }
-    .nav-brand-sub {
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--muted);
-      display: block;
-    }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2px;
-      flex: 1;
-    }
+    .nav-brand-sub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 400; color: var(--muted); display: block; }
+    .nav-links { display: flex; list-style: none; gap: 2px; flex: 1; }
     .nav-links li button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 7px 12px;
-      border-radius: var(--radius);
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color .15s, background .15s;
-      white-space: nowrap;
+      background: none; border: none; cursor: pointer;
+      padding: 7px 12px; border-radius: var(--radius);
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+      color: var(--muted); transition: color .15s, background .15s; white-space: nowrap;
     }
     .nav-links li button:hover { color: var(--blue); background: #EEF4FA; }
     .nav-links li button.active { color: var(--blue-dark); background: #DDE8F5; font-weight: 600; }
@@ -113,131 +80,62 @@
     /* HERO */
     #hero {
       background: linear-gradient(135deg, #1B4D72 0%, #2A6496 55%, #3A8A6E 100%);
-      padding: 80px 28px 72px;
-      position: relative;
-      overflow: hidden;
+      padding: 80px 28px 72px; position: relative; overflow: hidden;
     }
     #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     .hero-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
-      align-items: center;
+      max-width: var(--max); margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
     }
     .hero-label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.22);
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 18px;
+      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.22); padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
     }
     .hero-title {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 40px;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 14px;
+      font-family: var(--heading); font-size: 42px; font-weight: 700;
+      color: #fff; line-height: 1.18; margin-bottom: 16px;
     }
     .hero-question {
-      font-size: 17px;
-      color: rgba(255,255,255,0.8);
-      font-style: italic;
-      font-family: 'Source Serif 4', serif;
-      margin-bottom: 28px;
-      max-width: 520px;
-      line-height: 1.6;
+      font-size: 17px; color: rgba(255,255,255,0.85);
+      margin-bottom: 28px; max-width: 540px; line-height: 1.6;
+      border-left: 3px solid rgba(255,255,255,0.35); padding-left: 16px;
     }
     .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.32);
-      color: white;
-      padding: 10px 22px;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.32);
+      color: white; padding: 10px 22px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s;
       font-family: 'Inter', sans-serif;
     }
-    .hero-cta:hover { background: rgba(255,255,255,0.24); text-decoration: none; }
-    .hero-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-width: 190px;
-    }
+    .hero-cta:hover { background: rgba(255,255,255,0.24); }
+    .hero-stats { display: flex; flex-direction: column; gap: 12px; min-width: 190px; }
     .stat-card {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      text-align: center;
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16);
+      border-radius: var(--radius); padding: 16px 20px; text-align: center;
     }
-    .stat-num {
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 11px;
-      color: rgba(255,255,255,0.65);
-      margin-top: 4px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
+    .stat-num { font-family: var(--heading); font-size: 28px; font-weight: 700; color: #fff; line-height: 1; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,0.68); margin-top: 6px; text-transform: uppercase; letter-spacing: .08em; }
 
-    /* SECTION TOGGLE */
+    /* ALTERNÂNCIA DE SEÇÕES */
     section.page { display: none; }
     section.page.active { display: block; }
 
-    /* COMMON LAYOUT */
-    .section-wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 64px 28px;
-    }
+    /* LAYOUT COMUM */
+    .section-wrap { max-width: var(--max); margin: 0 auto; padding: 64px 28px; }
     .section-header { margin-bottom: 40px; }
     .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
     }
     .section-title {
-      font-family: 'Source Serif 4', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.25;
-      margin-bottom: 10px;
+      font-family: var(--heading); font-size: 28px; font-weight: 700;
+      color: var(--text); line-height: 1.25; margin-bottom: 10px;
     }
-    .section-desc {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 620px;
-      line-height: 1.7;
-    }
+    .section-desc { font-size: 16px; color: var(--muted); max-width: 640px; line-height: 1.7; }
     .divider { width: 44px; height: 3px; background: var(--blue); border-radius: 2px; margin: 14px 0 0; }
 
     /* CARDS */
@@ -245,94 +143,63 @@
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      box-shadow: var(--shadow-sm);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px; box-shadow: var(--shadow-sm);
     }
-    .card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 10px;
-      font-family: 'Source Serif 4', serif;
-    }
+    .card h3 { font-family: var(--heading); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
     .card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
     .card-icon {
-      width: 40px; height: 40px;
-      background: #EEF4FA;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
+      width: 40px; height: 40px; background: #EEF4FA; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
     }
     .card-icon svg { width: 20px; height: 20px; color: var(--blue); }
-
     .bullet-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
     .bullet-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); }
     .bullet-list li span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); margin-top: 8px; flex-shrink: 0; }
 
-    /* DATA */
+    /* LOGOS INSTITUCIONAIS */
+    .institutions { background: var(--surface); border-top: 1px solid var(--border); }
+    .institutions-inner { max-width: var(--max); margin: 0 auto; padding: 44px 28px 52px; text-align: center; }
+    .institutions .section-label { margin-bottom: 28px; color: var(--muted); }
+    .logo-row { display: flex; align-items: center; justify-content: center; gap: 72px; flex-wrap: wrap; }
+    .logo-row img { height: 96px; width: auto; object-fit: contain; }
+    .logo-row img.logo-ppgepi { height: 72px; }
+
+    /* DADOS */
     .embed-placeholder {
-      background: var(--surface);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 56px 28px;
-      text-align: center;
-      color: var(--light-text);
-      margin-top: 24px;
+      background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius);
+      padding: 56px 28px; text-align: center; color: var(--light-text); margin-top: 24px;
     }
+    .embed-placeholder svg { margin: 0 auto; }
     .embed-placeholder p { font-size: 14px; margin-top: 8px; }
 
-    /* METHODOLOGY */
-    .method-layout {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 40px;
-      align-items: start;
-    }
+    /* METODOLOGIA */
+    .method-layout { display: grid; grid-template-columns: 210px 1fr; gap: 40px; align-items: start; }
     .method-nav {
-      position: sticky;
-      top: calc(var(--nav-h) + 20px);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px 0;
-      box-shadow: var(--shadow-sm);
+      position: sticky; top: calc(var(--nav-h) + 20px);
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 12px 0; box-shadow: var(--shadow-sm);
     }
     .method-nav a {
-      display: block;
-      padding: 8px 18px;
-      font-size: 13px;
-      color: var(--muted);
-      border-left: 2px solid transparent;
-      transition: all .15s;
+      display: block; padding: 8px 18px; font-size: 13px; color: var(--muted);
+      border-left: 2px solid transparent; transition: all .15s;
     }
     .method-nav a:hover { color: var(--blue); border-color: var(--blue); text-decoration: none; background: #F4F8FC; }
     .method-nav a.active { color: var(--blue-dark); border-color: var(--blue-dark); background: #EEF4FA; font-weight: 500; }
-    .method-content section { margin-bottom: 44px; }
+    .method-content section { margin-bottom: 44px; scroll-margin-top: calc(var(--nav-h) + 20px); }
     .method-content section h2 {
-      font-family: 'Source Serif 4', serif;
-      font-size: 21px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
+      font-family: var(--heading); font-size: 21px; font-weight: 700; color: var(--text);
+      margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
     }
     .method-content section p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
     .method-content section ul { margin: 8px 0 12px 20px; color: var(--muted); font-size: 14px; line-height: 1.8; }
 
-    /* PUBLICATIONS */
-    .pub-tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 28px; }
+    /* PUBLICAÇÕES */
+    .pub-tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 28px; flex-wrap: wrap; }
     .pub-tabs button {
-      background: none; border: none; cursor: pointer;
-      padding: 10px 20px;
-      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
-      color: var(--muted);
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      transition: all .15s;
+      background: none; border: none; cursor: pointer; padding: 10px 20px;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--muted);
+      border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .15s;
     }
     .pub-tabs button:hover { color: var(--blue); }
     .pub-tabs button.active { color: var(--blue-dark); border-bottom-color: var(--blue-dark); font-weight: 600; }
@@ -340,69 +207,89 @@
     .pub-pane.active { display: block; }
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
     .pub-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-sm); }
-    .pub-item h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; font-family: 'Source Serif 4', serif; }
+    .pub-item h4 { font-family: var(--heading); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
     .pub-item p { font-size: 13px; color: var(--muted); }
     .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; background: #EEF4FA; color: var(--blue); font-weight: 500; margin-bottom: 8px; }
     .tag-green { background: #EAF5F1; color: var(--accent); }
 
-    /* TRANSPARENCY */
+    /* TRANSPARÊNCIA */
     .transp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; box-shadow: var(--shadow-sm); }
-    .transp-card h3 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .transp-card h3 { font-family: var(--heading); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
     .transp-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
     .badge { display: inline-flex; align-items: center; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; margin-top: 10px; }
     .badge-blue { background: #EEF4FA; color: var(--blue); }
     .badge-green { background: #EAF5F1; color: var(--accent); }
 
-    /* TEAM */
+    /* EQUIPE */
     .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 18px; text-align: center; box-shadow: var(--shadow-sm); }
-    .team-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #2A6496, #3A8A6E); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: white; font-family: 'Source Serif 4', serif; }
-    .team-card h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .team-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #2A6496, #3A8A6E);
+      margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--heading); font-size: 19px; font-weight: 700; color: white;
+    }
+    .team-card h4 { font-family: var(--heading); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
     .team-card p { font-size: 12px; color: var(--muted); }
     .team-role { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; background: #EEF4FA; color: var(--blue); margin-top: 7px; }
     .partners-row { margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border); }
-    .partners-row h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+    .partners-row h3 { font-family: var(--heading); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
     .partners-list { display: flex; flex-wrap: wrap; gap: 10px; }
     .partner-chip { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 9px 18px; font-size: 13px; font-weight: 500; color: var(--muted); }
 
-    /* CONTACT */
+    /* CONTATO */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .contact-info h3 { font-family: 'Source Serif 4', serif; font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+    .contact-info h3 { font-family: var(--heading); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
     .contact-info p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
     .contact-detail { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 10px; }
     .contact-detail svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--blue); margin-top: 2px; }
     .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); }
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); background: var(--bg); transition: border-color .15s; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius);
+      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); background: var(--bg); transition: border-color .15s;
+    }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--blue); background: var(--surface); }
     .form-group textarea { resize: vertical; min-height: 96px; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: white; border: none; padding: 10px 22px; border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: white; border: none;
+      padding: 10px 22px; border-radius: var(--radius); font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s;
+    }
     .btn-primary:hover { background: var(--blue-dark); }
 
-    /* FOOTER */
+    /* RODAPÉ */
     footer { background: var(--blue-dark); color: rgba(255,255,255,0.65); padding: 32px 28px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-left strong { color: white; font-size: 14px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-left strong { font-family: var(--heading); font-weight: 700; color: white; font-size: 14px; }
     .footer-left p { font-size: 12px; margin-top: 3px; }
     .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); }
     .footer-links a:hover { color: white; text-decoration: none; }
 
-    /* RESPONSIVE */
+    /* RESPONSIVO */
+    @media (max-width: 1000px) {
+      .nav-inner { overflow-x: auto; }
+    }
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-stats { flex-direction: row; }
-      .hero-title { font-size: 28px; }
-      .grid-2, .grid-4 { grid-template-columns: 1fr 1fr; }
-      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .hero-title { font-size: 30px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .method-layout { grid-template-columns: 1fr; }
       .method-nav { position: static; }
+      .logo-row { gap: 40px; }
     }
     @media (max-width: 600px) {
-      .nav-links li button { padding: 7px 8px; font-size: 11.5px; }
+      .nav-inner { padding: 0 16px; }
+      .nav-brand { margin-right: 16px; }
+      .nav-links li button { padding: 7px 8px; font-size: 12px; }
+      .section-wrap, #hero { padding-left: 16px; padding-right: 16px; }
       .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
       .hero-stats { flex-direction: column; }
+      .logo-row img { height: 72px; }
+      .logo-row img.logo-ppgepi { height: 56px; }
     }
   </style>
 </head>
@@ -421,12 +308,12 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><button class="active" onclick="navigate('inicio')">Inicio</button></li>
+      <li><button class="active" onclick="navigate('inicio')">Início</button></li>
       <li><button onclick="navigate('sobre')">Sobre</button></li>
       <li><button onclick="navigate('dados')">Dados</button></li>
       <li><button onclick="navigate('metodologia')">Metodologia</button></li>
-      <li><button onclick="navigate('publicacoes')">Publicacoes</button></li>
-      <li><button onclick="navigate('transparencia')">Transparencia</button></li>
+      <li><button onclick="navigate('publicacoes')">Publicações</button></li>
+      <li><button onclick="navigate('transparencia')">Transparência</button></li>
       <li><button onclick="navigate('equipe')">Equipe</button></li>
       <li><button onclick="navigate('contato')">Contato</button></li>
     </ul>
@@ -435,31 +322,31 @@
 
 <main class="main">
 
-  <!-- INICIO -->
+  <!-- INÍCIO -->
   <section id="inicio" class="page active">
     <div id="hero">
       <div class="hero-inner">
         <div>
           <span class="hero-label">Registro Populacional — Porto Alegre</span>
           <h1 class="hero-title">Registro de Diabetes<br>de Porto Alegre</h1>
-          <p class="hero-question">"Quem sao, onde estao e como e a trajetoria de cuidado das pessoas com diabetes em Porto Alegre?"</p>
+          <p class="hero-question">Quem são, onde estão e como é a trajetória de cuidado das pessoas com diabetes em Porto Alegre?</p>
           <button class="hero-cta" onclick="navigate('sobre')">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Conheca o Registro
+            Conheça o Registro
           </button>
         </div>
         <div class="hero-stats">
           <div class="stat-card">
-            <div class="stat-num">~60k</div>
-            <div class="stat-label">Casos estimados</div>
+            <div class="stat-num">—</div>
+            <div class="stat-label">Pessoas identificadas</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">100+</div>
-            <div class="stat-label">Unidades de saude</div>
+            <div class="stat-num">—</div>
+            <div class="stat-label">Fontes integradas</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">2024</div>
-            <div class="stat-label">Inicio do projeto</div>
+            <div class="stat-num">—</div>
+            <div class="stat-label">Anos de cobertura</div>
           </div>
         </div>
       </div>
@@ -467,14 +354,25 @@
     <div class="section-wrap">
       <div class="section-header">
         <div class="section-label">O Projeto</div>
-        <h2 class="section-title">Um registro de base populacional para apoiar politicas de saude</h2>
+        <h2 class="section-title">Um registro de base populacional para apoiar políticas de saúde</h2>
         <div class="divider"></div>
       </div>
       <div class="grid-2">
-        <div class="card"><h3>Objetivo</h3><p>Identificar e acompanhar pessoas com diabetes mellitus no municipio de Porto Alegre, descrevendo sua distribuicao territorial, caracteristicas clinicas e trajetoria de cuidado no sistema de saude.</p></div>
-        <div class="card"><h3>Por que isso importa?</h3><p>O diabetes e uma das principais causas de morbimortalidade no Brasil. Um registro robusto permite orientar intervencoes, avaliar equidade no acesso ao cuidado e subsidiar decisoes em nivel municipal.</p></div>
-        <div class="card"><h3>Dados e Fontes</h3><p>Integracao de sistemas de informacao em saude (SINAN, e-SUS, CNES, SIM, SINASC) com dados administrativos do municipio, buscando cobertura abrangente da populacao diagnosticada.</p></div>
-        <div class="card"><h3>Vinculo Institucional</h3><p>Iniciativa conjunta da Universidade Federal do Rio Grande do Sul (UFRGS) com a Secretaria Municipal de Saude de Porto Alegre (SMS-PMPA), no ambito de um programa de Iniciacao Cientifica.</p></div>
+        <div class="card"><h3>Objetivo</h3><p>Identificar e acompanhar pessoas com diabetes mellitus no município de Porto Alegre, descrevendo sua distribuição territorial, características clínicas e trajetória de cuidado no sistema de saúde.</p></div>
+        <div class="card"><h3>Por que isso importa?</h3><p>O diabetes é uma das principais causas de morbimortalidade no Brasil. Um registro robusto permite orientar intervenções, avaliar a equidade no acesso ao cuidado e subsidiar decisões em nível municipal.</p></div>
+        <div class="card"><h3>Dados e fontes</h3><p>Integração de sistemas de informação em saúde (e-SUS, SIM, SIH, SIA, entre outros) com dados administrativos do município, buscando cobertura abrangente da população diagnosticada.</p></div>
+        <div class="card"><h3>Vínculo institucional</h3><p>Iniciativa da Universidade Federal do Rio Grande do Sul (UFRGS), por meio do Programa de Pós-Graduação em Epidemiologia, em parceria com a Secretaria Municipal de Saúde de Porto Alegre (SMS-PMPA).</p></div>
+      </div>
+    </div>
+
+    <!-- LOGOS -->
+    <div class="institutions">
+      <div class="institutions-inner">
+        <div class="section-label">Realização</div>
+        <div class="logo-row">
+          <img src="assets/logo-ufrgs.png" alt="UFRGS — Universidade Federal do Rio Grande do Sul" />
+          <img src="assets/logo-ppgepi.png" class="logo-ppgepi" alt="PPGEPI — Programa de Pós-Graduação em Epidemiologia" />
+        </div>
       </div>
     </div>
   </section>
@@ -484,29 +382,29 @@
     <div class="section-wrap">
       <div class="section-header">
         <div class="section-label">Sobre o Registro</div>
-        <h2 class="section-title">O que e o Registro de Diabetes de Porto Alegre?</h2>
-        <p class="section-desc">Um sistema de informacao longitudinal, de base populacional, que visa identificar, caracterizar e acompanhar todas as pessoas com diagnostico de diabetes mellitus residentes em Porto Alegre.</p>
+        <h2 class="section-title">O que é o Registro de Diabetes de Porto Alegre?</h2>
+        <p class="section-desc">Um sistema de informação longitudinal, de base populacional, que visa identificar, caracterizar e acompanhar as pessoas com diagnóstico de diabetes mellitus residentes em Porto Alegre.</p>
         <div class="divider"></div>
       </div>
       <div class="grid-2">
-        <div class="card"><h3>Pergunta Norteadora</h3><p>Quem sao, onde estao e como e a trajetoria de cuidado das pessoas com diabetes em Porto Alegre? Essa questao orienta todas as etapas do registro.</p></div>
-        <div class="card"><h3>Tipo de Registro</h3><p>Registro de base territorial e populacional (population-based registry) com cobertura do municipio de Porto Alegre. Nao e um registro clinico restrito a uma unidade de saude.</p></div>
+        <div class="card"><h3>Pergunta norteadora</h3><p>Quem são, onde estão e como é a trajetória de cuidado das pessoas com diabetes em Porto Alegre? Essa questão orienta todas as etapas do registro, da captura de casos à análise de desfechos.</p></div>
+        <div class="card"><h3>Tipo de registro</h3><p>Registro de base territorial e populacional, com cobertura do município de Porto Alegre. Não é um registro clínico restrito a uma unidade de saúde.</p></div>
         <div class="card">
-          <h3>Populacao-Alvo</h3>
+          <h3>População-alvo</h3>
           <ul class="bullet-list">
-            <li><span></span>Pessoas com diagnostico de diabetes mellitus tipo 1 ou tipo 2</li>
-            <li><span></span>Residentes no municipio de Porto Alegre</li>
-            <li><span></span>Identificadas em qualquer nivel de atencao a saude</li>
-            <li><span></span>Foco inicial: adultos (18+ anos)</li>
+            <li><span></span>Pessoas com diagnóstico de diabetes mellitus</li>
+            <li><span></span>Residentes no município de Porto Alegre</li>
+            <li><span></span>Identificadas em qualquer nível de atenção à saúde</li>
+            <li><span></span>[Critérios de idade e tipo de diabetes a definir]</li>
           </ul>
         </div>
         <div class="card">
           <h3>Diferenciais</h3>
           <ul class="bullet-list">
-            <li><span></span>Integracao de multiplas fontes de dados administrativos</li>
+            <li><span></span>Integração de múltiplas fontes de dados administrativos</li>
             <li><span></span>Foco em equidade e determinantes sociais</li>
-            <li><span></span>Producao de boletins epidemiologicos regulares</li>
-            <li><span></span>Dados abertos e transparencia metodologica</li>
+            <li><span></span>Produção de boletins epidemiológicos regulares</li>
+            <li><span></span>Transparência metodológica</li>
           </ul>
         </div>
       </div>
@@ -518,31 +416,31 @@
     <div class="section-wrap">
       <div class="section-header">
         <div class="section-label">Dados</div>
-        <h2 class="section-title">Paineis e indicadores do registro</h2>
-        <p class="section-desc">Visualizacoes interativas com dados atualizados sobre prevalencia, distribuicao territorial e trajetoria de cuidado das pessoas com diabetes em Porto Alegre.</p>
+        <h2 class="section-title">Painéis e indicadores do registro</h2>
+        <p class="section-desc">Visualizações interativas sobre prevalência, distribuição territorial e trajetória de cuidado das pessoas com diabetes em Porto Alegre.</p>
         <div class="divider"></div>
       </div>
       <div class="grid-3">
         <div class="card">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <h3>Prevalencia e Incidencia</h3>
-          <p>Estimativas de casos por distrito sanitario, faixa etaria e tipo de diabetes mellitus.</p>
+          <h3>Prevalência e incidência</h3>
+          <p>Estimativas de casos por distrito sanitário, faixa etária e sexo.</p>
         </div>
         <div class="card">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <h3>Distribuicao Territorial</h3>
-          <p>Mapeamento de casos por bairro e regiao de saude, com analise de concentracao espacial.</p>
+          <h3>Distribuição territorial</h3>
+          <p>Mapeamento de casos por bairro e região de saúde, com análise de concentração espacial.</p>
         </div>
         <div class="card">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <h3>Trajetoria de Cuidado</h3>
+          <h3>Trajetória de cuidado</h3>
           <p>Indicadores de acesso, continuidade e qualidade do cuidado ao longo do tempo.</p>
         </div>
       </div>
       <div class="embed-placeholder">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#C0CCDA" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        <p>Painel interativo Power BI — em desenvolvimento</p>
-        <p style="font-size:12px; margin-top:4px; color: var(--light-text)">Os dados serao disponibilizados apos validacao da metodologia de linkage.</p>
+        <p>Painel interativo — em desenvolvimento</p>
+        <p style="font-size:12px; margin-top:4px;">Os dados serão disponibilizados após a validação da metodologia de integração das bases.</p>
       </div>
     </div>
   </section>
@@ -552,148 +450,141 @@
     <div class="section-wrap">
       <div class="section-header">
         <div class="section-label">Metodologia</div>
-        <h2 class="section-title">Desenho e metodos do registro</h2>
+        <h2 class="section-title">Desenho e métodos do registro</h2>
         <div class="divider"></div>
       </div>
       <div class="method-layout">
-        <nav class="method-nav">
+        <nav class="method-nav" aria-label="Índice da metodologia">
           <a href="#m-design" class="active" onclick="setMethodActive(this)">Desenho do estudo</a>
           <a href="#m-sources" onclick="setMethodActive(this)">Fontes de dados</a>
-          <a href="#m-linkage" onclick="setMethodActive(this)">Linkage de dados</a>
-          <a href="#m-case" onclick="setMethodActive(this)">Definicao de caso</a>
-          <a href="#m-analysis" onclick="setMethodActive(this)">Analise estatistica</a>
-          <a href="#m-ethics" onclick="setMethodActive(this)">Etica e privacidade</a>
+          <a href="#m-linkage" onclick="setMethodActive(this)">Integração das bases</a>
+          <a href="#m-case" onclick="setMethodActive(this)">Definição de caso</a>
+          <a href="#m-analysis" onclick="setMethodActive(this)">Análise estatística</a>
+          <a href="#m-limits" onclick="setMethodActive(this)">Limitações</a>
+          <a href="#m-ethics" onclick="setMethodActive(this)">Ética e privacidade</a>
         </nav>
         <div class="method-content">
           <section id="m-design">
             <h2>Desenho do estudo</h2>
-            <p>Registro de base populacional com delineamento longitudinal e corte transversal inicial. O periodo de referencia para identificacao dos casos parte de 2024, com acompanhamento prospectivo planejado.</p>
-            <p>A unidade de analise e o municipio de Porto Alegre, estratificado por Distritos Sanitarios (DS) e por nivel de atencao a saude (Atencao Primaria, Especializada e Hospitalar).</p>
+            <p>Registro de base populacional com delineamento longitudinal. [Descrever período de referência e estratégia de acompanhamento.]</p>
+            <p>A unidade de análise é o município de Porto Alegre, com possibilidade de estratificação por distrito sanitário e por nível de atenção à saúde (primária, especializada e hospitalar).</p>
           </section>
           <section id="m-sources">
             <h2>Fontes de dados</h2>
-            <p>A identificacao de casos utiliza multiplas bases de dados administrativos em saude, disponibilizadas pela Secretaria Municipal de Saude:</p>
+            <p>A identificação de casos utiliza bases de dados administrativos em saúde do município e do estado. [Confirmar a lista final de fontes.]</p>
             <ul>
-              <li>e-SUS PEC — atencao primaria</li>
-              <li>SINAN — notificacoes de agravo</li>
-              <li>SIM — Sistema de Informacoes sobre Mortalidade</li>
-              <li>SINASC — Nascidos Vivos</li>
-              <li>AIH / APAC — internacoes e procedimentos ambulatoriais</li>
-              <li>CNES — estabelecimentos de saude</li>
+              <li>e-SUS APS — atenção primária</li>
+              <li>SIM — Sistema de Informações sobre Mortalidade</li>
+              <li>SIH/SUS — internações hospitalares</li>
+              <li>SIA/SUS — procedimentos ambulatoriais</li>
+              <li>[Outras fontes]</li>
             </ul>
           </section>
           <section id="m-linkage">
-            <h2>Linkage de dados</h2>
-            <p>A integracao entre bases e realizada por linkage probabilistico e deterministico, utilizando variaveis-chave como CPF, nome completo, data de nascimento e nome da mae.</p>
-            <p>O processo segue protocolo validado internacionalmente, com avaliacao manual de pares ambiguos. A qualidade do linkage e monitorada por indicadores de sensibilidade e especificidade.</p>
+            <h2>Integração das bases</h2>
+            <p>A integração entre bases é realizada por linkage determinístico e/ou probabilístico, com variáveis de identificação como CPF, CNS, nome, data de nascimento e nome da mãe. [Detalhar parâmetros, software e avaliação de qualidade.]</p>
           </section>
           <section id="m-case">
-            <h2>Definicao de caso</h2>
-            <p>Um caso de diabetes mellitus e definido como individuo que atende a pelo menos um dos seguintes criterios em qualquer das fontes integradas:</p>
+            <h2>Definição de caso</h2>
+            <p>Uma pessoa é incluída no registro quando atende a pelo menos um dos critérios definidos nas fontes integradas, como:</p>
             <ul>
-              <li>Codigo CID-10 E10–E14 em diagnostico principal ou secundario</li>
-              <li>Prescricao de insulina ou hipoglicemiante oral registrada no sistema de saude</li>
-              <li>Resultado de exame laboratorial compativel com criterios da SBD/ADA</li>
+              <li>Código CID-10 E10–E14 em diagnóstico principal ou secundário</li>
+              <li>Registro de dispensação de medicamentos para diabetes</li>
+              <li>[Demais critérios a definir]</li>
             </ul>
           </section>
           <section id="m-analysis">
-            <h2>Analise estatistica</h2>
-            <p>As analises descritivas incluem prevalencia estimada por faixa etaria, sexo, raca/cor e distrito sanitario. Metodos de padronizacao direta sao utilizados para comparabilidade temporal.</p>
-            <p>Analises de sobrevida (Kaplan-Meier, Cox) serao aplicadas para estudo de trajetoria de cuidado e desfechos clinicos. Software: R (CRAN).</p>
+            <h2>Análise estatística</h2>
+            <p>As análises descritivas incluem prevalência estimada por faixa etária, sexo, raça/cor e distrito sanitário, com padronização para comparabilidade temporal.</p>
+            <p>[Descrever modelos e métodos para o estudo da trajetória de cuidado e dos desfechos.]</p>
+          </section>
+          <section id="m-limits">
+            <h2>Limitações</h2>
+            <p>O registro cobre usuários do sistema público de saúde; pessoas atendidas exclusivamente no setor privado podem não ser identificadas. Outras limitações incluem sub-registro variável entre sistemas e períodos e qualidade do endereço registrado.</p>
           </section>
           <section id="m-ethics">
-            <h2>Etica e privacidade</h2>
-            <p>O projeto sera submetido ao Comite de Etica em Pesquisa (CEP) da UFRGS e, quando aplicavel, a CONEP. O manejo de dados segue a Lei Geral de Protecao de Dados (LGPD — Lei n. 13.709/2018).</p>
-            <p>Dados individuais nao sao divulgados. Todas as analises e publicacoes utilizam dados anonimizados ou agregados.</p>
+            <h2>Ética e privacidade</h2>
+            <p>O projeto segue as normas do Comitê de Ética em Pesquisa (CEP) e a Lei Geral de Proteção de Dados (LGPD — Lei n.º 13.709/2018). [Inserir número do parecer.]</p>
+            <p>Dados individuais não são divulgados. Todas as análises e publicações utilizam dados anonimizados ou agregados.</p>
           </section>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PUBLICACOES -->
+  <!-- PUBLICAÇÕES -->
   <section id="publicacoes" class="page">
     <div class="section-wrap">
       <div class="section-header">
-        <div class="section-label">Publicacoes</div>
-        <h2 class="section-title">Producao cientifica e tecnica</h2>
-        <p class="section-desc">Artigos, boletins epidemiologicos e trabalhos academicos produzidos no ambito do Registro de Diabetes de Porto Alegre.</p>
+        <div class="section-label">Publicações</div>
+        <h2 class="section-title">Produção científica e técnica</h2>
+        <p class="section-desc">Artigos, boletins epidemiológicos e trabalhos acadêmicos produzidos no âmbito do Registro de Diabetes de Porto Alegre.</p>
         <div class="divider"></div>
       </div>
       <div class="pub-tabs">
         <button class="active" onclick="setTab('artigos', this)">Artigos</button>
-        <button onclick="setTab('boletins', this)">Boletins Epidemiologicos</button>
-        <button onclick="setTab('tccs', this)">TCCs e Dissertacoes</button>
+        <button onclick="setTab('boletins', this)">Boletins epidemiológicos</button>
+        <button onclick="setTab('tccs', this)">TCCs e dissertações</button>
       </div>
       <div id="artigos" class="pub-pane active">
         <div class="pub-list">
           <div class="pub-item">
-            <span class="tag">Em elaboracao</span>
-            <h4>Prevalencia e distribuicao territorial do diabetes mellitus em Porto Alegre: um registro de base populacional</h4>
-            <p>Autores: a definir &mdash; Revista: a definir &mdash; Previsao de submissao: 2025</p>
+            <span class="tag">Em elaboração</span>
+            <h4>[Título do artigo científico]</h4>
+            <p>Autores et al. — Periódico — Ano — DOI</p>
           </div>
         </div>
       </div>
       <div id="boletins" class="pub-pane">
         <div class="pub-list">
           <div class="pub-item">
-            <span class="tag">Em elaboracao</span>
-            <h4>Boletim Epidemiologico n. 1 — Diabetes em Porto Alegre: panorama inicial</h4>
-            <p>Estimativas de prevalencia por distrito sanitario e perfil demografico dos casos identificados.</p>
+            <span class="tag">Em elaboração</span>
+            <h4>Boletim Epidemiológico n.º 1 — Diabetes em Porto Alegre: panorama inicial</h4>
+            <p>Estimativas de prevalência por distrito sanitário e perfil demográfico dos casos identificados.</p>
           </div>
         </div>
       </div>
       <div id="tccs" class="pub-pane">
         <div class="pub-list">
           <div class="pub-item">
-            <span class="tag tag-green">IC em andamento</span>
-            <h4>Modelagem e estruturacao de registro populacional de diabetes no municipio de Porto Alegre</h4>
-            <p>Trabalho de Iniciacao Cientifica — Departamento de Estatistica, UFRGS</p>
+            <span class="tag tag-green">Em andamento</span>
+            <h4>[Título do TCC ou dissertação]</h4>
+            <p>Autor — Curso / Programa — UFRGS — Ano</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRANSPARENCIA -->
+  <!-- TRANSPARÊNCIA -->
   <section id="transparencia" class="page">
     <div class="section-wrap">
       <div class="section-header">
-        <div class="section-label">Transparencia e Governanca</div>
-        <h2 class="section-title">Abertura, responsabilidade e boas praticas</h2>
-        <p class="section-desc">Comprometidos com a ciencia aberta, a protecao de dados e a governanca etica do registro.</p>
+        <div class="section-label">Transparência e Governança</div>
+        <h2 class="section-title">Uso responsável dos dados</h2>
+        <p class="section-desc">Ética, proteção de dados, segurança e política de acesso ao Registro de Diabetes de Porto Alegre.</p>
         <div class="divider"></div>
       </div>
       <div class="grid-2">
         <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Protocolo e Pre-registro</h3>
-          <p>O protocolo do estudo sera depositado em repositorio publico (OSF ou PROSPERO) antes do inicio da coleta de dados, garantindo rastreabilidade das decisoes metodologicas.</p>
-          <span class="badge badge-blue">Em preparacao</span>
+          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Aprovação ética</h3>
+          <p>[Número e data do parecer do CEP e instituição responsável pela avaliação ética do projeto.]</p>
+          <span class="badge badge-blue">A preencher</span>
         </div>
         <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Aprovacao Etica</h3>
-          <p>O projeto sera submetido ao CEP/UFRGS e, quando aplicavel, a CONEP. O numero de aprovacao sera divulgado nesta pagina apos emissao do parecer.</p>
-          <span class="badge badge-blue">Aguardando submissao</span>
+          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> LGPD e privacidade</h3>
+          <p>Dados tratados conforme a Lei Geral de Proteção de Dados (Lei n.º 13.709/2018). [Descrever medidas de anonimização e controle de acesso.]</p>
+          <span class="badge badge-blue">A preencher</span>
         </div>
         <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Dados Abertos</h3>
-          <p>Dados anonimizados e agregados serao disponibilizados publicamente apos validacao e aprovacao etica, em formato aberto e reutilizavel (CSV, JSON).</p>
+          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Política de acesso</h3>
+          <p>[Quem pode solicitar acesso, quais dados estão disponíveis e como funciona a análise e aprovação de novas pesquisas.]</p>
+          <span class="badge badge-blue">A preencher</span>
+        </div>
+        <div class="transp-card">
+          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> Código aberto</h3>
+          <p>Scripts de integração, limpeza e análise poderão ser disponibilizados em repositório público, promovendo a reprodutibilidade.</p>
           <span class="badge badge-green">Previsto</span>
-        </div>
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> Codigo Aberto</h3>
-          <p>Scripts de linkage, limpeza e analise serao disponibilizados em repositorio publico (GitHub) sob licenca aberta, promovendo reproducibilidade.</p>
-          <span class="badge badge-green">Previsto</span>
-        </div>
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Protecao de Dados (LGPD)</h3>
-          <p>O registro segue integralmente a Lei n. 13.709/2018 (LGPD). Dados identificados so sao acessados por pesquisadores autorizados, com controles de acesso e trilha de auditoria.</p>
-          <span class="badge badge-blue">Em conformidade</span>
-        </div>
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Comite Consultivo</h3>
-          <p>Sera constituido um comite com representantes da SMS, academia, sociedade civil e pessoas com diabetes, para supervisionar a governanca do registro.</p>
-          <span class="badge badge-blue">Em estruturacao</span>
         </div>
       </div>
     </div>
@@ -704,22 +595,21 @@
     <div class="section-wrap">
       <div class="section-header">
         <div class="section-label">Equipe e Parceiros</div>
-        <h2 class="section-title">As pessoas por tras do registro</h2>
+        <h2 class="section-title">As pessoas por trás do registro</h2>
         <div class="divider"></div>
       </div>
       <div class="grid-4">
-        <div class="team-card"><div class="team-avatar">P</div><h4>Prof. [Nome]</h4><p>Coordenador do projeto</p><span class="team-role">Orientador</span></div>
-        <div class="team-card"><div class="team-avatar">G</div><h4>Gabriel Costa</h4><p>Bolsista IC — Estatistica</p><span class="team-role">Pesquisador</span></div>
-        <div class="team-card"><div class="team-avatar">S</div><h4>[Colaborador SMS]</h4><p>Secretaria Municipal de Saude</p><span class="team-role">Parceiro institucional</span></div>
-        <div class="team-card"><div class="team-avatar">+</div><h4>Colaboradores</h4><p>Equipe em formacao</p><span class="team-role">A definir</span></div>
+        <div class="team-card"><div class="team-avatar">RD</div><h4>Rafael Dal Moro</h4><p>UFRGS</p><span class="team-role">Coordenador do projeto</span></div>
+        <div class="team-card"><div class="team-avatar">LD</div><h4>Luísa Dorneles</h4><p>Iniciação Científica</p><span class="team-role">Bolsista IC</span></div>
+        <div class="team-card"><div class="team-avatar">GC</div><h4>Gabriel Costa</h4><p>Iniciação Científica — Estatística</p><span class="team-role">Bolsista IC</span></div>
+        <div class="team-card"><div class="team-avatar">+</div><h4>[Colaborador SMS]</h4><p>Secretaria Municipal de Saúde</p><span class="team-role">Parceiro institucional</span></div>
       </div>
       <div class="partners-row">
-        <h3>Institucoes parceiras</h3>
+        <h3>Instituições parceiras</h3>
         <div class="partners-list">
           <div class="partner-chip">UFRGS — Universidade Federal do Rio Grande do Sul</div>
-          <div class="partner-chip">SMS-PMPA — Secretaria Municipal de Saude</div>
-          <div class="partner-chip">Departamento de Estatistica / UFRGS</div>
-          <div class="partner-chip">PPG Epidemiologia / UFRGS</div>
+          <div class="partner-chip">PPGEPI — Programa de Pós-Graduação em Epidemiologia</div>
+          <div class="partner-chip">SMS-PMPA — Secretaria Municipal de Saúde de Porto Alegre</div>
         </div>
       </div>
     </div>
@@ -736,30 +626,30 @@
       <div class="contact-grid">
         <div class="contact-info">
           <h3>Como podemos ajudar?</h3>
-          <p>Para duvidas sobre o registro, solicitacao de dados, propostas de colaboracao ou informacoes sobre o projeto, entre em contato pelos canais abaixo.</p>
+          <p>Para dúvidas sobre o registro, solicitação de dados, propostas de colaboração ou informações sobre o projeto, entre em contato pelos canais abaixo.</p>
           <div class="contact-detail">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>registro.diabetes@ufrgs.br (em breve)</span>
+            <span>[e-mail institucional do projeto]</span>
           </div>
           <div class="contact-detail">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Departamento de Estatistica — UFRGS<br>Porto Alegre, RS — Brasil</span>
+            <span>Programa de Pós-Graduação em Epidemiologia — UFRGS<br>Porto Alegre, RS — Brasil</span>
           </div>
         </div>
         <div class="contact-form">
-          <div class="form-group"><label>Nome completo</label><input type="text" placeholder="Seu nome" /></div>
-          <div class="form-group"><label>E-mail</label><input type="email" placeholder="seu@email.com" /></div>
+          <div class="form-group"><label for="c-nome">Nome completo</label><input id="c-nome" type="text" placeholder="Seu nome" /></div>
+          <div class="form-group"><label for="c-email">E-mail</label><input id="c-email" type="email" placeholder="seu@email.com" /></div>
           <div class="form-group">
-            <label>Assunto</label>
-            <select>
+            <label for="c-assunto">Assunto</label>
+            <select id="c-assunto">
               <option value="">Selecione um assunto</option>
-              <option>Solicitacao de dados</option>
-              <option>Proposta de colaboracao</option>
-              <option>Imprensa e comunicacao</option>
-              <option>Duvidas gerais</option>
+              <option>Solicitação de dados</option>
+              <option>Proposta de colaboração</option>
+              <option>Imprensa e comunicação</option>
+              <option>Dúvidas gerais</option>
             </select>
           </div>
-          <div class="form-group"><label>Mensagem</label><textarea placeholder="Descreva sua mensagem..."></textarea></div>
+          <div class="form-group"><label for="c-msg">Mensagem</label><textarea id="c-msg" placeholder="Descreva sua mensagem..."></textarea></div>
           <button class="btn-primary" type="button">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             Enviar mensagem
@@ -775,12 +665,12 @@
   <div class="footer-inner">
     <div class="footer-left">
       <strong>Registro de Diabetes de Porto Alegre</strong>
-      <p>UFRGS / SMS-PMPA &mdash; Porto Alegre, RS &mdash; 2024&ndash;</p>
+      <p>UFRGS / PPGEPI / SMS-PMPA — Porto Alegre, RS</p>
     </div>
     <div class="footer-links">
-      <a href="#" onclick="navigate('transparencia')">Transparencia</a>
-      <a href="#" onclick="navigate('metodologia')">Metodologia</a>
-      <a href="#" onclick="navigate('contato')">Contato</a>
+      <a href="#" onclick="navigate('transparencia'); return false;">Transparência</a>
+      <a href="#" onclick="navigate('metodologia'); return false;">Metodologia</a>
+      <a href="#" onclick="navigate('contato'); return false;">Contato</a>
     </div>
   </div>
 </footer>
@@ -791,8 +681,9 @@
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     const section = document.getElementById(target);
     if (section) section.classList.add('active');
-    const btns = document.querySelectorAll('.nav-links button');
-    btns.forEach(b => { if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + target + "'")) b.classList.add('active'); });
+    document.querySelectorAll('.nav-links button').forEach(b => {
+      if ((b.getAttribute('onclick') || '').includes("'" + target + "'")) b.classList.add('active');
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   function setMethodActive(el) {
