@@ -86,7 +86,7 @@ a:hover { text-decoration: underline; }
 /* véu azul por cima da foto, mais forte do lado do texto */
 #hero::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(90deg, rgba(18,46,74,0.94) 0%, rgba(27,77,114,0.84) 45%, rgba(27,77,114,0.45) 100%);
+  background: linear-gradient(90deg, rgba(18,46,74,0.86) 0%, rgba(27,77,114,0.72) 45%, rgba(27,77,114,0.32) 100%);
 }
 /* efeito ao rolar: a foto aproxima ao descer e volta ao subir (navegadores sem suporte mostram a foto parada) */
 @keyframes hero-zoom {
