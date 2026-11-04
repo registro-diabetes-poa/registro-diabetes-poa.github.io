@@ -80,8 +80,8 @@ a:hover { text-decoration: underline; }
 /* foto de fundo (camada de baixo) */
 .hero-bg {
   position: absolute; inset: 0; z-index: -2;
-  background: url("assets/hero-diabetes.jpg") 70% 35% / cover no-repeat;
-  transform-origin: 70% 35%;
+  background: url("assets/hero-glicemia.jpg") 60% 40% / cover no-repeat;
+  transform-origin: 65% 40%;
 }
 /* véu azul por cima da foto, mais forte do lado do texto */
 #hero::before {
@@ -91,7 +91,7 @@ a:hover { text-decoration: underline; }
 /* efeito ao rolar: a foto aproxima ao descer e volta ao subir (navegadores sem suporte mostram a foto parada) */
 @keyframes hero-zoom {
   from { transform: scale(1); opacity: 1; }
-  to   { transform: scale(1.3); opacity: .55; }
+  to   { transform: scale(1.6); opacity: .5; }
 }
 @supports (animation-timeline: view()) {
   .hero-bg {
@@ -178,6 +178,7 @@ a:hover { text-decoration: underline; }
 .logo-row img { width: auto; object-fit: contain; }
 .logo-row img.logo-ufrgs { height: 84px; }
 .logo-row img.logo-ppgepi { height: 62px; }
+.logo-row img.logo-sms { height: 80px; }
 
 /* DADOS */
 .embed-placeholder {
@@ -349,5 +350,6 @@ footer { background: var(--blue-dark); color: rgba(255,255,255,0.65); padding: 3
   .hero-stats { flex-direction: column; }
   .logo-row img.logo-ufrgs { height: 68px; }
   .logo-row img.logo-ppgepi { height: 50px; }
+  .logo-row img.logo-sms { height: 64px; }
 }
   
