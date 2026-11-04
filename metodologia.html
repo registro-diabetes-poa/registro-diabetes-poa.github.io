@@ -59,19 +59,34 @@
       <div class="method-content">
         <section id="m-design">
           <h2>Desenho do estudo</h2>
-          <p>Registro de base populacional com delineamento longitudinal. [Descrever período de referência e estratégia de acompanhamento.]</p>
+          <p>Registro de base populacional construído a partir de dados assistenciais, regulatórios e de vigilância, com janela temporal histórica de 2016 em diante. [Descrever estratégia de acompanhamento.]</p>
           <p>A unidade de análise é o município de Porto Alegre, com possibilidade de estratificação por distrito sanitário e por nível de atenção à saúde (primária, especializada e hospitalar).</p>
         </section>
         <section id="m-sources">
           <h2>Fontes de dados</h2>
-          <p>A identificação de casos utiliza bases de dados administrativos em saúde do município e do estado. [Confirmar a lista final de fontes.]</p>
-          <ul>
-            <li>e-SUS APS — atenção primária</li>
-            <li>SIM — Sistema de Informações sobre Mortalidade</li>
-            <li>SIH/SUS — internações hospitalares</li>
-            <li>SIA/SUS — procedimentos ambulatoriais</li>
-            <li>[Outras fontes]</li>
-          </ul>
+          <p>O registro reúne 12 conjuntos de dados, provenientes de 7 sistemas de informação. Para cada conjunto, indica-se o registro de interesse utilizado na identificação das pessoas com diabetes.</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Conjunto de dados</th><th>Registro de interesse</th><th>Sistema</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Atendimentos individuais da APS</td><td>CID, CIAP, medicamento/item prescrito</td><td>e-SUS PEC</td></tr>
+                <tr><td>Procedimentos da APS</td><td>Procedimento</td><td>e-SUS PEC</td></tr>
+                <tr><td>Medicamentos dispensados</td><td>Medicamento/item dispensado</td><td>DIS</td></tr>
+                <tr><td>Consultas especializadas</td><td>CID</td><td>GERCON Consultas</td></tr>
+                <tr><td>Exames ambulatoriais regulados</td><td>CID</td><td>GERCON Exames</td></tr>
+                <tr><td>Exames ambulatoriais não regulados</td><td>CID</td><td>GERCON Exames</td></tr>
+                <tr><td>Inscrição em programas de saúde</td><td>Programa</td><td>GERCON Programas</td></tr>
+                <tr><td>Internações — solicitações</td><td>CID</td><td>GERINT Solicitações</td></tr>
+                <tr><td>Internações — faturamento</td><td>CID</td><td>GERINT Faturamento</td></tr>
+                <tr><td>Procedimentos de alta complexidade</td><td>CID</td><td>GERPAC</td></tr>
+                <tr><td>Atendimentos ambulatoriais de urgência</td><td>CID, sintoma</td><td>SIHO</td></tr>
+                <tr><td>Registro de óbitos</td><td>CID</td><td>SIM</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">APS: Atenção Primária à Saúde. CID: Classificação Internacional de Doenças. CIAP: Classificação Internacional de Atenção Primária.</p>
         </section>
         <section id="m-linkage">
           <h2>Integração das bases</h2>
@@ -79,12 +94,8 @@
         </section>
         <section id="m-case">
           <h2>Definição de caso</h2>
-          <p>Uma pessoa é incluída no registro quando atende a pelo menos um dos critérios definidos nas fontes integradas, como:</p>
-          <ul>
-            <li>Código CID-10 E10–E14 em diagnóstico principal ou secundário</li>
-            <li>Registro de dispensação de medicamentos para diabetes</li>
-            <li>[Demais critérios a definir]</li>
-          </ul>
+          <p>Critério macro de inclusão: pessoas naturais, residentes em Porto Alegre, que possuam ao menos um evento em saúde relacionado ao diabetes (por exemplo: atendimento, exame, prescrição, dispensação ou internação) em qualquer um dos conjuntos de dados.</p>
+          <p>[Detalhar os códigos CID, CIAP, procedimentos e medicamentos considerados em cada fonte.]</p>
         </section>
         <section id="m-analysis">
           <h2>Análise estatística</h2>
