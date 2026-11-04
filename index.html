@@ -4,300 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Diabetes de Porto Alegre</title>
+  <meta name="description" content="Registro de base populacional sobre quem são, onde estão e como é a trajetória de cuidado das pessoas com diabetes em Porto Alegre. UFRGS / PPGEPI / SMS-PMPA." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --blue:       #2A6496;
-      --blue-dark:  #1B4D72;
-      --accent:     #3A8A6E;
-      --bg:         #F8FAFB;
-      --surface:    #FFFFFF;
-      --border:     #DDE3EB;
-      --text:       #1A2533;
-      --muted:      #5A6B7B;
-      --light-text: #8A9BAB;
-      --nav-h:      64px;
-      --max:        1180px;
-      --radius:     6px;
-      --shadow-sm:  0 1px 4px rgba(0,0,0,0.08);
-      --heading:    'Roboto', 'Inter', sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 15px;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* MENU SUPERIOR */
-    #topnav {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-      display: flex; align-items: center;
-      box-shadow: var(--shadow-sm);
-    }
-    .nav-inner {
-      max-width: var(--max); margin: 0 auto; padding: 0 28px;
-      width: 100%; display: flex; align-items: center;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-      flex-shrink: 0; margin-right: 36px; cursor: pointer;
-    }
-    .nav-brand-icon {
-      width: 34px; height: 34px; background: var(--blue); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .nav-brand-icon svg { width: 18px; height: 18px; fill: white; }
-    .nav-brand-name {
-      font-family: var(--heading);
-      font-size: 13px; font-weight: 700; color: var(--blue-dark); line-height: 1.25;
-    }
-    .nav-brand-sub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 400; color: var(--muted); display: block; }
-    .nav-links { display: flex; list-style: none; gap: 2px; flex: 1; }
-    .nav-links li button {
-      background: none; border: none; cursor: pointer;
-      padding: 7px 12px; border-radius: var(--radius);
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-      color: var(--muted); transition: color .15s, background .15s; white-space: nowrap;
-    }
-    .nav-links li button:hover { color: var(--blue); background: #EEF4FA; }
-    .nav-links li button.active { color: var(--blue-dark); background: #DDE8F5; font-weight: 600; }
-
-    .main { margin-top: var(--nav-h); }
-
-    /* HERO */
-    #hero {
-      background: linear-gradient(135deg, #1B4D72 0%, #2A6496 55%, #3A8A6E 100%);
-      padding: 80px 28px 72px; position: relative; overflow: hidden;
-    }
-    #hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .hero-inner {
-      max-width: var(--max); margin: 0 auto; position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
-    }
-    .hero-label {
-      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.22); padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
-    }
-    .hero-title {
-      font-family: var(--heading); font-size: 42px; font-weight: 700;
-      color: #fff; line-height: 1.18; margin-bottom: 16px;
-    }
-    .hero-question {
-      font-size: 17px; color: rgba(255,255,255,0.85);
-      margin-bottom: 28px; max-width: 540px; line-height: 1.6;
-      border-left: 3px solid rgba(255,255,255,0.35); padding-left: 16px;
-    }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.32);
-      color: white; padding: 10px 22px; border-radius: var(--radius);
-      font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .hero-cta:hover { background: rgba(255,255,255,0.24); }
-    .hero-stats { display: flex; flex-direction: column; gap: 12px; min-width: 190px; }
-    .stat-card {
-      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16);
-      border-radius: var(--radius); padding: 16px 20px; text-align: center;
-    }
-    .stat-num { font-family: var(--heading); font-size: 28px; font-weight: 700; color: #fff; line-height: 1; }
-    .stat-label { font-size: 11px; color: rgba(255,255,255,0.68); margin-top: 6px; text-transform: uppercase; letter-spacing: .08em; }
-
-    /* ALTERNÂNCIA DE SEÇÕES */
-    section.page { display: none; }
-    section.page.active { display: block; }
-
-    /* LAYOUT COMUM */
-    .section-wrap { max-width: var(--max); margin: 0 auto; padding: 64px 28px; }
-    .section-header { margin-bottom: 40px; }
-    .section-label {
-      font-size: 11px; font-weight: 600; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
-    }
-    .section-title {
-      font-family: var(--heading); font-size: 28px; font-weight: 700;
-      color: var(--text); line-height: 1.25; margin-bottom: 10px;
-    }
-    .section-desc { font-size: 16px; color: var(--muted); max-width: 640px; line-height: 1.7; }
-    .divider { width: 44px; height: 3px; background: var(--blue); border-radius: 2px; margin: 14px 0 0; }
-
-    /* CARDS */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 24px 28px; box-shadow: var(--shadow-sm);
-    }
-    .card h3 { font-family: var(--heading); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
-    .card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
-    .card-icon {
-      width: 40px; height: 40px; background: #EEF4FA; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
-    }
-    .card-icon svg { width: 20px; height: 20px; color: var(--blue); }
-    .bullet-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
-    .bullet-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); }
-    .bullet-list li span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); margin-top: 8px; flex-shrink: 0; }
-
-    /* LOGOS INSTITUCIONAIS */
-    .institutions { background: var(--surface); border-top: 1px solid var(--border); }
-    .institutions-inner { max-width: var(--max); margin: 0 auto; padding: 44px 28px 52px; text-align: center; }
-    .institutions .section-label { margin-bottom: 28px; color: var(--muted); }
-    .logo-row { display: flex; align-items: center; justify-content: center; gap: 72px; flex-wrap: wrap; }
-    .logo-row img { height: 96px; width: auto; object-fit: contain; }
-    .logo-row img.logo-ppgepi { height: 72px; }
-
-    /* DADOS */
-    .embed-placeholder {
-      background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius);
-      padding: 56px 28px; text-align: center; color: var(--light-text); margin-top: 24px;
-    }
-    .embed-placeholder svg { margin: 0 auto; }
-    .embed-placeholder p { font-size: 14px; margin-top: 8px; }
-
-    /* METODOLOGIA */
-    .method-layout { display: grid; grid-template-columns: 210px 1fr; gap: 40px; align-items: start; }
-    .method-nav {
-      position: sticky; top: calc(var(--nav-h) + 20px);
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 12px 0; box-shadow: var(--shadow-sm);
-    }
-    .method-nav a {
-      display: block; padding: 8px 18px; font-size: 13px; color: var(--muted);
-      border-left: 2px solid transparent; transition: all .15s;
-    }
-    .method-nav a:hover { color: var(--blue); border-color: var(--blue); text-decoration: none; background: #F4F8FC; }
-    .method-nav a.active { color: var(--blue-dark); border-color: var(--blue-dark); background: #EEF4FA; font-weight: 500; }
-    .method-content section { margin-bottom: 44px; scroll-margin-top: calc(var(--nav-h) + 20px); }
-    .method-content section h2 {
-      font-family: var(--heading); font-size: 21px; font-weight: 700; color: var(--text);
-      margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
-    }
-    .method-content section p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
-    .method-content section ul { margin: 8px 0 12px 20px; color: var(--muted); font-size: 14px; line-height: 1.8; }
-
-    /* PUBLICAÇÕES */
-    .pub-tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 28px; flex-wrap: wrap; }
-    .pub-tabs button {
-      background: none; border: none; cursor: pointer; padding: 10px 20px;
-      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--muted);
-      border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .15s;
-    }
-    .pub-tabs button:hover { color: var(--blue); }
-    .pub-tabs button.active { color: var(--blue-dark); border-bottom-color: var(--blue-dark); font-weight: 600; }
-    .pub-pane { display: none; }
-    .pub-pane.active { display: block; }
-    .pub-list { display: flex; flex-direction: column; gap: 14px; }
-    .pub-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-sm); }
-    .pub-item h4 { font-family: var(--heading); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-    .pub-item p { font-size: 13px; color: var(--muted); }
-    .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; background: #EEF4FA; color: var(--blue); font-weight: 500; margin-bottom: 8px; }
-    .tag-green { background: #EAF5F1; color: var(--accent); }
-
-    /* TRANSPARÊNCIA */
-    .transp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; box-shadow: var(--shadow-sm); }
-    .transp-card h3 { font-family: var(--heading); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .transp-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
-    .badge { display: inline-flex; align-items: center; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; margin-top: 10px; }
-    .badge-blue { background: #EEF4FA; color: var(--blue); }
-    .badge-green { background: #EAF5F1; color: var(--accent); }
-
-    /* EQUIPE */
-    .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 18px; text-align: center; box-shadow: var(--shadow-sm); }
-    .team-avatar {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: linear-gradient(135deg, #2A6496, #3A8A6E);
-      margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
-      font-family: var(--heading); font-size: 19px; font-weight: 700; color: white;
-    }
-    .team-card h4 { font-family: var(--heading); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .team-card p { font-size: 12px; color: var(--muted); }
-    .team-role { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; background: #EEF4FA; color: var(--blue); margin-top: 7px; }
-    .partners-row { margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border); }
-    .partners-row h3 { font-family: var(--heading); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
-    .partners-list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .partner-chip { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 9px 18px; font-size: 13px; font-weight: 500; color: var(--muted); }
-
-    /* CONTATO */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .contact-info h3 { font-family: var(--heading); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
-    .contact-info p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
-    .contact-detail { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 10px; }
-    .contact-detail svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--blue); margin-top: 2px; }
-    .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); }
-    .form-group { margin-bottom: 14px; }
-    .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius);
-      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); background: var(--bg); transition: border-color .15s;
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--blue); background: var(--surface); }
-    .form-group textarea { resize: vertical; min-height: 96px; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: white; border: none;
-      padding: 10px 22px; border-radius: var(--radius); font-family: 'Inter', sans-serif;
-      font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s;
-    }
-    .btn-primary:hover { background: var(--blue-dark); }
-
-    /* RODAPÉ */
-    footer { background: var(--blue-dark); color: rgba(255,255,255,0.65); padding: 32px 28px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .footer-left strong { font-family: var(--heading); font-weight: 700; color: white; font-size: 14px; }
-    .footer-left p { font-size: 12px; margin-top: 3px; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); }
-    .footer-links a:hover { color: white; text-decoration: none; }
-
-    /* RESPONSIVO */
-    @media (max-width: 1000px) {
-      .nav-inner { overflow-x: auto; }
-    }
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-stats { flex-direction: row; }
-      .hero-title { font-size: 30px; }
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .method-layout { grid-template-columns: 1fr; }
-      .method-nav { position: static; }
-      .logo-row { gap: 40px; }
-    }
-    @media (max-width: 600px) {
-      .nav-inner { padding: 0 16px; }
-      .nav-brand { margin-right: 16px; }
-      .nav-links li button { padding: 7px 8px; font-size: 12px; }
-      .section-wrap, #hero { padding-left: 16px; padding-right: 16px; }
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-      .hero-stats { flex-direction: column; }
-      .logo-row img { height: 72px; }
-      .logo-row img.logo-ppgepi { height: 56px; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <nav id="topnav">
   <div class="nav-inner">
-    <div class="nav-brand" onclick="navigate('inicio')">
+    <a class="nav-brand" href="index.html">
       <div class="nav-brand-icon">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14a5 5 0 110-10 5 5 0 010 10zm0-8a3 3 0 100 6 3 3 0 000-6z"/></svg>
       </div>
@@ -306,358 +23,75 @@
           <span class="nav-brand-sub">UFRGS / SMS-PMPA</span>
         </span>
       </div>
-    </div>
+    </a>
     <ul class="nav-links">
-      <li><button class="active" onclick="navigate('inicio')">Início</button></li>
-      <li><button onclick="navigate('sobre')">Sobre</button></li>
-      <li><button onclick="navigate('dados')">Dados</button></li>
-      <li><button onclick="navigate('metodologia')">Metodologia</button></li>
-      <li><button onclick="navigate('publicacoes')">Publicações</button></li>
-      <li><button onclick="navigate('transparencia')">Transparência</button></li>
-      <li><button onclick="navigate('equipe')">Equipe</button></li>
-      <li><button onclick="navigate('contato')">Contato</button></li>
+      <li><a href="index.html" class="active" aria-current="page">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="dados.html">Dados</a></li>
+      <li><a href="metodologia.html">Metodologia</a></li>
+      <li><a href="publicacoes.html">Publicações</a></li>
+      <li><a href="transparencia.html">Transparência</a></li>
+      <li><a href="equipe.html">Equipe</a></li>
+      <li><a href="contato.html">Contato</a></li>
     </ul>
   </div>
 </nav>
 
 <main class="main">
 
-  <!-- INÍCIO -->
-  <section id="inicio" class="page active">
-    <div id="hero">
-      <div class="hero-inner">
-        <div>
-          <span class="hero-label">Registro Populacional — Porto Alegre</span>
-          <h1 class="hero-title">Registro de Diabetes<br>de Porto Alegre</h1>
-          <p class="hero-question">Quem são, onde estão e como é a trajetória de cuidado das pessoas com diabetes em Porto Alegre?</p>
-          <button class="hero-cta" onclick="navigate('sobre')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Conheça o Registro
-          </button>
+<section id="inicio">
+  <div id="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-label">Registro Populacional — Porto Alegre</span>
+        <h1 class="hero-title">Registro de Diabetes<br>de Porto Alegre</h1>
+        <p class="hero-question">Quem são, onde estão e como é a trajetória de cuidado das pessoas com diabetes em Porto Alegre?</p>
+        <a class="hero-cta" href="sobre.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Conheça o Registro
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">—</div>
+          <div class="stat-label">Pessoas identificadas</div>
         </div>
-        <div class="hero-stats">
-          <div class="stat-card">
-            <div class="stat-num">—</div>
-            <div class="stat-label">Pessoas identificadas</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">—</div>
-            <div class="stat-label">Fontes integradas</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">—</div>
-            <div class="stat-label">Anos de cobertura</div>
-          </div>
+        <div class="stat-card">
+          <div class="stat-num">—</div>
+          <div class="stat-label">Fontes integradas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">—</div>
+          <div class="stat-label">Anos de cobertura</div>
         </div>
       </div>
     </div>
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">O Projeto</div>
-        <h2 class="section-title">Um registro de base populacional para apoiar políticas de saúde</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="grid-2">
-        <div class="card"><h3>Objetivo</h3><p>Identificar e acompanhar pessoas com diabetes mellitus no município de Porto Alegre, descrevendo sua distribuição territorial, características clínicas e trajetória de cuidado no sistema de saúde.</p></div>
-        <div class="card"><h3>Por que isso importa?</h3><p>O diabetes é uma das principais causas de morbimortalidade no Brasil. Um registro robusto permite orientar intervenções, avaliar a equidade no acesso ao cuidado e subsidiar decisões em nível municipal.</p></div>
-        <div class="card"><h3>Dados e fontes</h3><p>Integração de sistemas de informação em saúde (e-SUS, SIM, SIH, SIA, entre outros) com dados administrativos do município, buscando cobertura abrangente da população diagnosticada.</p></div>
-        <div class="card"><h3>Vínculo institucional</h3><p>Iniciativa da Universidade Federal do Rio Grande do Sul (UFRGS), por meio do Programa de Pós-Graduação em Epidemiologia, em parceria com a Secretaria Municipal de Saúde de Porto Alegre (SMS-PMPA).</p></div>
-      </div>
+  </div>
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-label">O Projeto</div>
+      <h2 class="section-title">Um registro de base populacional para apoiar políticas de saúde</h2>
+      <div class="divider"></div>
     </div>
+    <div class="grid-2">
+      <div class="card"><h3>Objetivo</h3><p>Identificar e acompanhar pessoas com diabetes mellitus no município de Porto Alegre, descrevendo sua distribuição territorial, características clínicas e trajetória de cuidado no sistema de saúde.</p></div>
+      <div class="card"><h3>Por que isso importa?</h3><p>O diabetes é uma das principais causas de morbimortalidade no Brasil. Um registro robusto permite orientar intervenções, avaliar a equidade no acesso ao cuidado e subsidiar decisões em nível municipal.</p></div>
+      <div class="card"><h3>Dados e fontes</h3><p>Integração de sistemas de informação em saúde (e-SUS, SIM, SIH, SIA, entre outros) com dados administrativos do município, buscando cobertura abrangente da população diagnosticada.</p></div>
+      <div class="card"><h3>Vínculo institucional</h3><p>Iniciativa da Universidade Federal do Rio Grande do Sul (UFRGS), por meio do Programa de Pós-Graduação em Epidemiologia, em parceria com a Secretaria Municipal de Saúde de Porto Alegre (SMS-PMPA).</p></div>
+    </div>
+  </div>
 
-    <!-- LOGOS -->
-    <div class="institutions">
-      <div class="institutions-inner">
-        <div class="section-label">Realização</div>
-        <div class="logo-row">
-          <img src="assets/logo-ufrgs.png" alt="UFRGS — Universidade Federal do Rio Grande do Sul" />
-          <img src="assets/logo-ppgepi.png" class="logo-ppgepi" alt="PPGEPI — Programa de Pós-Graduação em Epidemiologia" />
-        </div>
+  <!-- LOGOS -->
+  <div class="institutions">
+    <div class="institutions-inner">
+      <div class="section-label">Realização</div>
+      <div class="logo-row">
+        <img src="assets/logo-ufrgs.png" alt="UFRGS — Universidade Federal do Rio Grande do Sul" />
+        <img src="assets/logo-ppgepi.png" class="logo-ppgepi" alt="PPGEPI — Programa de Pós-Graduação em Epidemiologia" />
       </div>
     </div>
-  </section>
-
-  <!-- SOBRE -->
-  <section id="sobre" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Sobre o Registro</div>
-        <h2 class="section-title">O que é o Registro de Diabetes de Porto Alegre?</h2>
-        <p class="section-desc">Um sistema de informação longitudinal, de base populacional, que visa identificar, caracterizar e acompanhar as pessoas com diagnóstico de diabetes mellitus residentes em Porto Alegre.</p>
-        <div class="divider"></div>
-      </div>
-      <div class="grid-2">
-        <div class="card"><h3>Pergunta norteadora</h3><p>Quem são, onde estão e como é a trajetória de cuidado das pessoas com diabetes em Porto Alegre? Essa questão orienta todas as etapas do registro, da captura de casos à análise de desfechos.</p></div>
-        <div class="card"><h3>Tipo de registro</h3><p>Registro de base territorial e populacional, com cobertura do município de Porto Alegre. Não é um registro clínico restrito a uma unidade de saúde.</p></div>
-        <div class="card">
-          <h3>População-alvo</h3>
-          <ul class="bullet-list">
-            <li><span></span>Pessoas com diagnóstico de diabetes mellitus</li>
-            <li><span></span>Residentes no município de Porto Alegre</li>
-            <li><span></span>Identificadas em qualquer nível de atenção à saúde</li>
-            <li><span></span>[Critérios de idade e tipo de diabetes a definir]</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Diferenciais</h3>
-          <ul class="bullet-list">
-            <li><span></span>Integração de múltiplas fontes de dados administrativos</li>
-            <li><span></span>Foco em equidade e determinantes sociais</li>
-            <li><span></span>Produção de boletins epidemiológicos regulares</li>
-            <li><span></span>Transparência metodológica</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DADOS -->
-  <section id="dados" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Dados</div>
-        <h2 class="section-title">Painéis e indicadores do registro</h2>
-        <p class="section-desc">Visualizações interativas sobre prevalência, distribuição territorial e trajetória de cuidado das pessoas com diabetes em Porto Alegre.</p>
-        <div class="divider"></div>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <h3>Prevalência e incidência</h3>
-          <p>Estimativas de casos por distrito sanitário, faixa etária e sexo.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <h3>Distribuição territorial</h3>
-          <p>Mapeamento de casos por bairro e região de saúde, com análise de concentração espacial.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <h3>Trajetória de cuidado</h3>
-          <p>Indicadores de acesso, continuidade e qualidade do cuidado ao longo do tempo.</p>
-        </div>
-      </div>
-      <div class="embed-placeholder">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#C0CCDA" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        <p>Painel interativo — em desenvolvimento</p>
-        <p style="font-size:12px; margin-top:4px;">Os dados serão disponibilizados após a validação da metodologia de integração das bases.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- METODOLOGIA -->
-  <section id="metodologia" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Metodologia</div>
-        <h2 class="section-title">Desenho e métodos do registro</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="method-layout">
-        <nav class="method-nav" aria-label="Índice da metodologia">
-          <a href="#m-design" class="active" onclick="setMethodActive(this)">Desenho do estudo</a>
-          <a href="#m-sources" onclick="setMethodActive(this)">Fontes de dados</a>
-          <a href="#m-linkage" onclick="setMethodActive(this)">Integração das bases</a>
-          <a href="#m-case" onclick="setMethodActive(this)">Definição de caso</a>
-          <a href="#m-analysis" onclick="setMethodActive(this)">Análise estatística</a>
-          <a href="#m-limits" onclick="setMethodActive(this)">Limitações</a>
-          <a href="#m-ethics" onclick="setMethodActive(this)">Ética e privacidade</a>
-        </nav>
-        <div class="method-content">
-          <section id="m-design">
-            <h2>Desenho do estudo</h2>
-            <p>Registro de base populacional com delineamento longitudinal. [Descrever período de referência e estratégia de acompanhamento.]</p>
-            <p>A unidade de análise é o município de Porto Alegre, com possibilidade de estratificação por distrito sanitário e por nível de atenção à saúde (primária, especializada e hospitalar).</p>
-          </section>
-          <section id="m-sources">
-            <h2>Fontes de dados</h2>
-            <p>A identificação de casos utiliza bases de dados administrativos em saúde do município e do estado. [Confirmar a lista final de fontes.]</p>
-            <ul>
-              <li>e-SUS APS — atenção primária</li>
-              <li>SIM — Sistema de Informações sobre Mortalidade</li>
-              <li>SIH/SUS — internações hospitalares</li>
-              <li>SIA/SUS — procedimentos ambulatoriais</li>
-              <li>[Outras fontes]</li>
-            </ul>
-          </section>
-          <section id="m-linkage">
-            <h2>Integração das bases</h2>
-            <p>A integração entre bases é realizada por linkage determinístico e/ou probabilístico, com variáveis de identificação como CPF, CNS, nome, data de nascimento e nome da mãe. [Detalhar parâmetros, software e avaliação de qualidade.]</p>
-          </section>
-          <section id="m-case">
-            <h2>Definição de caso</h2>
-            <p>Uma pessoa é incluída no registro quando atende a pelo menos um dos critérios definidos nas fontes integradas, como:</p>
-            <ul>
-              <li>Código CID-10 E10–E14 em diagnóstico principal ou secundário</li>
-              <li>Registro de dispensação de medicamentos para diabetes</li>
-              <li>[Demais critérios a definir]</li>
-            </ul>
-          </section>
-          <section id="m-analysis">
-            <h2>Análise estatística</h2>
-            <p>As análises descritivas incluem prevalência estimada por faixa etária, sexo, raça/cor e distrito sanitário, com padronização para comparabilidade temporal.</p>
-            <p>[Descrever modelos e métodos para o estudo da trajetória de cuidado e dos desfechos.]</p>
-          </section>
-          <section id="m-limits">
-            <h2>Limitações</h2>
-            <p>O registro cobre usuários do sistema público de saúde; pessoas atendidas exclusivamente no setor privado podem não ser identificadas. Outras limitações incluem sub-registro variável entre sistemas e períodos e qualidade do endereço registrado.</p>
-          </section>
-          <section id="m-ethics">
-            <h2>Ética e privacidade</h2>
-            <p>O projeto segue as normas do Comitê de Ética em Pesquisa (CEP) e a Lei Geral de Proteção de Dados (LGPD — Lei n.º 13.709/2018). [Inserir número do parecer.]</p>
-            <p>Dados individuais não são divulgados. Todas as análises e publicações utilizam dados anonimizados ou agregados.</p>
-          </section>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICAÇÕES -->
-  <section id="publicacoes" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Publicações</div>
-        <h2 class="section-title">Produção científica e técnica</h2>
-        <p class="section-desc">Artigos, boletins epidemiológicos e trabalhos acadêmicos produzidos no âmbito do Registro de Diabetes de Porto Alegre.</p>
-        <div class="divider"></div>
-      </div>
-      <div class="pub-tabs">
-        <button class="active" onclick="setTab('artigos', this)">Artigos</button>
-        <button onclick="setTab('boletins', this)">Boletins epidemiológicos</button>
-        <button onclick="setTab('tccs', this)">TCCs e dissertações</button>
-      </div>
-      <div id="artigos" class="pub-pane active">
-        <div class="pub-list">
-          <div class="pub-item">
-            <span class="tag">Em elaboração</span>
-            <h4>[Título do artigo científico]</h4>
-            <p>Autores et al. — Periódico — Ano — DOI</p>
-          </div>
-        </div>
-      </div>
-      <div id="boletins" class="pub-pane">
-        <div class="pub-list">
-          <div class="pub-item">
-            <span class="tag">Em elaboração</span>
-            <h4>Boletim Epidemiológico n.º 1 — Diabetes em Porto Alegre: panorama inicial</h4>
-            <p>Estimativas de prevalência por distrito sanitário e perfil demográfico dos casos identificados.</p>
-          </div>
-        </div>
-      </div>
-      <div id="tccs" class="pub-pane">
-        <div class="pub-list">
-          <div class="pub-item">
-            <span class="tag tag-green">Em andamento</span>
-            <h4>[Título do TCC ou dissertação]</h4>
-            <p>Autor — Curso / Programa — UFRGS — Ano</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRANSPARÊNCIA -->
-  <section id="transparencia" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Transparência e Governança</div>
-        <h2 class="section-title">Uso responsável dos dados</h2>
-        <p class="section-desc">Ética, proteção de dados, segurança e política de acesso ao Registro de Diabetes de Porto Alegre.</p>
-        <div class="divider"></div>
-      </div>
-      <div class="grid-2">
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Aprovação ética</h3>
-          <p>[Número e data do parecer do CEP e instituição responsável pela avaliação ética do projeto.]</p>
-          <span class="badge badge-blue">A preencher</span>
-        </div>
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> LGPD e privacidade</h3>
-          <p>Dados tratados conforme a Lei Geral de Proteção de Dados (Lei n.º 13.709/2018). [Descrever medidas de anonimização e controle de acesso.]</p>
-          <span class="badge badge-blue">A preencher</span>
-        </div>
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Política de acesso</h3>
-          <p>[Quem pode solicitar acesso, quais dados estão disponíveis e como funciona a análise e aprovação de novas pesquisas.]</p>
-          <span class="badge badge-blue">A preencher</span>
-        </div>
-        <div class="transp-card">
-          <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A6496" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> Código aberto</h3>
-          <p>Scripts de integração, limpeza e análise poderão ser disponibilizados em repositório público, promovendo a reprodutibilidade.</p>
-          <span class="badge badge-green">Previsto</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EQUIPE -->
-  <section id="equipe" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Equipe e Parceiros</div>
-        <h2 class="section-title">As pessoas por trás do registro</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="grid-4">
-        <div class="team-card"><div class="team-avatar">RD</div><h4>Rafael Dal Moro</h4><p>UFRGS</p><span class="team-role">Coordenador do projeto</span></div>
-        <div class="team-card"><div class="team-avatar">LD</div><h4>Luísa Dorneles</h4><p>Iniciação Científica</p><span class="team-role">Bolsista IC</span></div>
-        <div class="team-card"><div class="team-avatar">GC</div><h4>Gabriel Costa</h4><p>Iniciação Científica — Estatística</p><span class="team-role">Bolsista IC</span></div>
-        <div class="team-card"><div class="team-avatar">+</div><h4>[Colaborador SMS]</h4><p>Secretaria Municipal de Saúde</p><span class="team-role">Parceiro institucional</span></div>
-      </div>
-      <div class="partners-row">
-        <h3>Instituições parceiras</h3>
-        <div class="partners-list">
-          <div class="partner-chip">UFRGS — Universidade Federal do Rio Grande do Sul</div>
-          <div class="partner-chip">PPGEPI — Programa de Pós-Graduação em Epidemiologia</div>
-          <div class="partner-chip">SMS-PMPA — Secretaria Municipal de Saúde de Porto Alegre</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section id="contato" class="page">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-label">Contato</div>
-        <h2 class="section-title">Fale com a equipe</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Como podemos ajudar?</h3>
-          <p>Para dúvidas sobre o registro, solicitação de dados, propostas de colaboração ou informações sobre o projeto, entre em contato pelos canais abaixo.</p>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>[e-mail institucional do projeto]</span>
-          </div>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Programa de Pós-Graduação em Epidemiologia — UFRGS<br>Porto Alegre, RS — Brasil</span>
-          </div>
-        </div>
-        <div class="contact-form">
-          <div class="form-group"><label for="c-nome">Nome completo</label><input id="c-nome" type="text" placeholder="Seu nome" /></div>
-          <div class="form-group"><label for="c-email">E-mail</label><input id="c-email" type="email" placeholder="seu@email.com" /></div>
-          <div class="form-group">
-            <label for="c-assunto">Assunto</label>
-            <select id="c-assunto">
-              <option value="">Selecione um assunto</option>
-              <option>Solicitação de dados</option>
-              <option>Proposta de colaboração</option>
-              <option>Imprensa e comunicação</option>
-              <option>Dúvidas gerais</option>
-            </select>
-          </div>
-          <div class="form-group"><label for="c-msg">Mensagem</label><textarea id="c-msg" placeholder="Descreva sua mensagem..."></textarea></div>
-          <button class="btn-primary" type="button">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Enviar mensagem
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
@@ -668,35 +102,12 @@
       <p>UFRGS / PPGEPI / SMS-PMPA — Porto Alegre, RS</p>
     </div>
     <div class="footer-links">
-      <a href="#" onclick="navigate('transparencia'); return false;">Transparência</a>
-      <a href="#" onclick="navigate('metodologia'); return false;">Metodologia</a>
-      <a href="#" onclick="navigate('contato'); return false;">Contato</a>
+      <a href="transparencia.html">Transparência</a>
+      <a href="metodologia.html">Metodologia</a>
+      <a href="contato.html">Contato</a>
     </div>
   </div>
 </footer>
 
-<script>
-  function navigate(target) {
-    document.querySelectorAll('section.page').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    const section = document.getElementById(target);
-    if (section) section.classList.add('active');
-    document.querySelectorAll('.nav-links button').forEach(b => {
-      if ((b.getAttribute('onclick') || '').includes("'" + target + "'")) b.classList.add('active');
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  function setMethodActive(el) {
-    document.querySelectorAll('.method-nav a').forEach(a => a.classList.remove('active'));
-    el.classList.add('active');
-  }
-  function setTab(id, btn) {
-    document.querySelectorAll('.pub-pane').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.pub-tabs button').forEach(b => b.classList.remove('active'));
-    const pane = document.getElementById(id);
-    if (pane) pane.classList.add('active');
-    btn.classList.add('active');
-  }
-</script>
 </body>
 </html>
