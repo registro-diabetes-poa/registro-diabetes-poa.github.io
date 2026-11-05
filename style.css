@@ -287,7 +287,12 @@ a:hover { text-decoration: underline; }
 .badge-green { background: #EAF5F1; color: var(--accent); }
 
 /* EQUIPE */
-.team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 18px; text-align: center; box-shadow: var(--shadow-sm); }
+/* 3 colunas; a última linha incompleta fica centralizada */
+.team-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.team-grid > .team-card { flex: 0 1 calc((100% - 40px) / 3); }
+@media (max-width: 900px) { .team-grid > .team-card { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 600px) { .team-grid > .team-card { flex-basis: 100%; } }
+.team-card {background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 18px; text-align: center; box-shadow: var(--shadow-sm); }
 .team-avatar {
   width: 56px; height: 56px; border-radius: 50%;
   background: linear-gradient(135deg, #2A6496, #3A8A6E);
