@@ -51,14 +51,21 @@ for img in set(re.findall(r'url\("(assets/[^"]+)"\)', css)):
     css = css.replace(f'url("{img}")', f'url("{data_uri(img)}")')
 ids = [sid(n) for n in order]
 css += """
-/* ARQUIVO ÚNICO: mostra uma seção por vez conforme a âncora da URL */
-main > section { display: none; scroll-margin-top: var(--nav-h); }
+/* ARQUIVO ÚNICO: mostra uma seção por vez conforme a âncora da URL.
+   Fica dentro de @supports: em navegadores sem :has (Firefox antes de 121,
+   Safari antes de 15.4) a regra inteira seria descartada e TODAS as páginas
+   sumiriam. Sem suporte, as páginas aparecem uma embaixo da outra e o menu
+   rola até a página clicada. */
+main > section { scroll-margin-top: var(--nav-h); }
+@supports selector(:has(a)) {
+main > section { display: none; }
 main > section:target,
 main > section:has(:target),
 main:not(:has(:target)) > #inicio { display: block; }
 """ + ",\n".join(f'body:has(#{i}:target, #{i} :target) .nav-links a[href="#{i}"]' for i in ids) + \
 """ { color: var(--blue-dark); background: #DDE8F5; font-weight: 600; }
 body:not(:has(main :target)) .nav-links a[href="#inicio"] { color: var(--blue-dark); background: #DDE8F5; font-weight: 600; }
+}
 """
 
 head = re.search(r"<head>(.*?)</head>", idx, re.S).group(1)
