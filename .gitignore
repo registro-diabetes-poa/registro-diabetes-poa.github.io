@@ -1,0 +1,25 @@
+# Documentos internos do projeto (espaço restrito) — não publicar
+RPDM-PA-*.pdf
+fluxo_*.png
+*.docx
+
+# Logos originais (o site usa as versões tratadas em assets/)
+UFRGS.jpeg
+PPGEST.jpeg
+
+# Arquivo único gerado para enviar a colegas
+site-RPDM-PA*.html
+site-registro-diabetes-poa*.html
+
+# Notas e configurações do Claude (citam pendências internas)
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
