@@ -201,7 +201,48 @@ a:hover { text-decoration: underline; }
 }
 .method-nav a:hover { color: var(--blue); border-color: var(--blue); text-decoration: none; background: #F4F8FC; }
 .method-nav a.active { color: var(--blue-dark); border-color: var(--blue-dark); background: #EEF4FA; font-weight: 500; }
-.method-content section { margin-bottom: 44px; scroll-margin-top: calc(var(--nav-h) + 20px); }
+.method-content section { padding-bottom: 44px; scroll-margin-top: calc(var(--nav-h) + 20px); }
+
+/* Destaque da seção em leitura, só com CSS (scroll-driven animations).
+   Cada seção cria uma linha do tempo de visualização restrita a uma faixa fina
+   a 25% do topo da tela; o link do índice fica destacado enquanto a seção
+   cruza essa faixa. Navegadores sem suporte (Firefox) mostram o índice sem destaque. */
+@keyframes method-ativo {
+  from, to { color: var(--blue-dark); border-color: var(--blue-dark); background: #EEF4FA; font-weight: 500; }
+}
+@supports (timeline-scope: --a) {
+  .method-layout { timeline-scope: --m-sources, --m-flow, --m-steps, --m-case, --m-limits; }
+  .method-content section { view-timeline-inset: 25% 74%; }
+  #m-sources { view-timeline-name: --m-sources; }
+  #m-flow    { view-timeline-name: --m-flow; }
+  #m-steps   { view-timeline-name: --m-steps; }
+  #m-case    { view-timeline-name: --m-case; }
+  #m-limits  { view-timeline-name: --m-limits; }
+  .method-nav a { animation: method-ativo linear none; animation-range: cover 0% cover 100%; }
+  .method-nav a[href="#m-sources"] { animation-timeline: --m-sources; }
+  .method-nav a[href="#m-flow"]    { animation-timeline: --m-flow; }
+  .method-nav a[href="#m-steps"]   { animation-timeline: --m-steps; }
+  .method-nav a[href="#m-case"]    { animation-timeline: --m-case; }
+  .method-nav a[href="#m-limits"]  { animation-timeline: --m-limits; }
+  /* a última seção precisa de altura para chegar à faixa de leitura */
+  .method-content section:last-child { min-height: 60vh; }
+}
+
+/* Etapas numeradas (fluxo e tratamento) */
+.step-list { list-style: none; margin: 16px 0 18px; padding: 0; display: grid; gap: 10px; }
+.step-list li {
+  display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.step-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: #EEF4FA; color: var(--blue-dark);
+  font-family: var(--heading); font-weight: 700; font-size: 14px;
+}
+.step-list strong { display: block; font-family: var(--heading); font-weight: 700; font-size: 15px; color: var(--text); margin: 2px 0 2px; }
+.method-content section .step-list p { margin: 0; line-height: 1.7; }
 .method-content section h2 {
   font-family: var(--heading); font-size: 21px; font-weight: 700; color: var(--text);
   margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border);

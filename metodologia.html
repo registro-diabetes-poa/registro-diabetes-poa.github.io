@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Metodologia | RPDM-PA</title>
-  <meta name="description" content="Desenho do estudo, fontes de dados, integração das bases, definição de caso, análise estatística e limitações do Registro." />
+  <meta name="description" content="Fontes de dados, fluxo dos dados, etapas de tratamento, definição de caso e limitações do Registro de Pessoas com Diabetes Mellitus de Porto Alegre." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
@@ -48,23 +48,17 @@
     </div>
     <div class="method-layout">
       <nav class="method-nav" aria-label="Índice da metodologia">
-        <a href="#m-design">Desenho do estudo</a>
         <a href="#m-sources">Fontes de dados</a>
-        <a href="#m-linkage">Integração das bases</a>
+        <a href="#m-flow">Fluxo dos dados</a>
+        <a href="#m-steps">Etapas de tratamento</a>
         <a href="#m-case">Definição de caso</a>
-        <a href="#m-analysis">Análise estatística</a>
         <a href="#m-limits">Limitações</a>
-        <a href="#m-ethics">Ética e privacidade</a>
       </nav>
       <div class="method-content">
-        <section id="m-design">
-          <h2>Desenho do estudo</h2>
-          <p>Registro de base populacional construído a partir de dados assistenciais, regulatórios e de vigilância, com janela temporal histórica de 2016 em diante. [Descrever estratégia de acompanhamento.]</p>
-          <p>A unidade de análise é o município de Porto Alegre, com possibilidade de estratificação por distrito sanitário e por nível de atenção à saúde (primária, especializada e hospitalar).</p>
-        </section>
         <section id="m-sources">
           <h2>Fontes de dados</h2>
-          <p>O registro reúne 12 conjuntos de dados, provenientes de 7 sistemas de informação. Para cada conjunto, indica-se o registro de interesse utilizado na identificação das pessoas com diabetes.</p>
+          <p>O registro é construído a partir de dados assistenciais, regulatórios e de vigilância dos sistemas de informação da Secretaria Municipal de Saúde de Porto Alegre (SMS-POA), com janela temporal histórica de 2016 em diante.</p>
+          <p>São 12 conjuntos de dados, provenientes de 7 sistemas de informação. Para cada conjunto, indica-se o registro de interesse utilizado na identificação das pessoas com diabetes.</p>
           <div class="table-wrap">
             <table class="data-table">
               <thead>
@@ -88,28 +82,40 @@
           </div>
           <p class="table-note">APS: Atenção Primária à Saúde. CID: Classificação Internacional de Doenças. CIAP: Classificação Internacional de Atenção Primária.</p>
         </section>
-        <section id="m-linkage">
-          <h2>Integração das bases</h2>
-          <p>A integração entre bases é realizada por linkage determinístico e/ou probabilístico, com variáveis de identificação como CPF, CNS, nome, data de nascimento e nome da mãe. [Detalhar parâmetros, software e avaliação de qualidade.]</p>
+        <section id="m-flow">
+          <h2>Fluxo dos dados</h2>
+          <p>Os dados percorrem o seguinte caminho, da origem nos sistemas da SMS-POA até os produtos do registro:</p>
+          <ol class="step-list">
+            <li><span class="step-num">1</span><div><strong>Origem</strong><p>As informações são geradas nos sistemas de informação da SMS-POA, mantidos na infraestrutura da PROCEMPA.</p></div></li>
+            <li><span class="step-num">2</span><div><strong>Lago de dados da SMS</strong><p>Os dados de interesse são consolidados em um lago de dados de uso interno da Secretaria. Essas etapas já fazem parte da rotina da Prefeitura.</p></div></li>
+            <li><span class="step-num">3</span><div><strong>Repositório do registro</strong><p>Os dados relevantes para o registro são separados em um repositório específico.</p></div></li>
+            <li><span class="step-num">4</span><div><strong>Transferência segura</strong><p>A partir desse repositório, os dados são transferidos de forma automatizada e segura para o ambiente do Centro de Processamento de Dados da UFRGS (CPD UFRGS).</p></div></li>
+            <li><span class="step-num">5</span><div><strong>Tratamento e produtos</strong><p>Na UFRGS, os dados passam pelas etapas de tratamento descritas abaixo e alimentam painéis, análises e publicações, acessados apenas por pesquisadores e servidores autorizados.</p></div></li>
+          </ol>
+          <p>Está prevista a migração das soluções desenvolvidas para o ambiente de produção da SMS-POA, seja por transferência tecnológica, seja pelo compartilhamento das regras validadas.</p>
+          <p>O processamento utiliza as linguagens Python e R, banco de dados PostgreSQL e painéis no Apache Superset.</p>
+        </section>
+        <section id="m-steps">
+          <h2>Etapas de tratamento</h2>
+          <p>No ambiente da UFRGS, os dados são transformados e enriquecidos em cinco etapas, que geram os principais conjuntos de dados do registro.</p>
+          <ol class="step-list">
+            <li><span class="step-num">1</span><div><strong>Transferência e ingestão</strong><p>Os conjuntos de dados das fontes primárias são recebidos e armazenados no ambiente do registro.</p></div></li>
+            <li><span class="step-num">2</span><div><strong>Eventos de diabetes</strong><p>Em cada fonte, são selecionados os eventos relacionados ao diabetes, a partir dos registros de interesse: CID, CIAP, procedimentos, medicamentos prescritos ou dispensados, programas de saúde e sintomas.</p></div></li>
+            <li><span class="step-num">3a</span><div><strong>Pessoas com diabetes</strong><p>Os eventos são deduplicados e agrupados por pessoa, formando o conjunto das pessoas com diabetes.</p></div></li>
+            <li><span class="step-num">3b</span><div><strong>Enriquecimento dos dados</strong><p>O conjunto de pessoas recebe informações complementares, como sexo, raça/cor, idade e cadastro na Atenção Primária à Saúde.</p></div></li>
+            <li><span class="step-num">4</span><div><strong>Eventos das pessoas com diabetes</strong><p>Para as pessoas identificadas, são reunidos todos os eventos em saúde registrados nas fontes, e não apenas os relacionados ao diabetes.</p></div></li>
+            <li><span class="step-num">5</span><div><strong>Fatores de risco</strong><p>A partir desses eventos, são identificados fatores de risco das pessoas com diabetes. [Detalhar quais fatores são considerados.]</p></div></li>
+          </ol>
         </section>
         <section id="m-case">
           <h2>Definição de caso</h2>
           <p>Critério macro de inclusão: pessoas naturais, residentes em Porto Alegre, que possuam ao menos um evento em saúde relacionado ao diabetes (por exemplo: atendimento, exame, prescrição, dispensação ou internação) em qualquer um dos conjuntos de dados.</p>
           <p>[Detalhar os códigos CID, CIAP, procedimentos e medicamentos considerados em cada fonte.]</p>
         </section>
-        <section id="m-analysis">
-          <h2>Análise estatística</h2>
-          <p>As análises descritivas incluem prevalência estimada por faixa etária, sexo, raça/cor e distrito sanitário, com padronização para comparabilidade temporal.</p>
-          <p>[Descrever modelos e métodos para o estudo da trajetória de cuidado e dos desfechos.]</p>
-        </section>
         <section id="m-limits">
           <h2>Limitações</h2>
           <p>O registro cobre usuários do sistema público de saúde; pessoas atendidas exclusivamente no setor privado podem não ser identificadas. Outras limitações incluem sub-registro variável entre sistemas e períodos e qualidade do endereço registrado.</p>
-        </section>
-        <section id="m-ethics">
-          <h2>Ética e privacidade</h2>
-          <p>O projeto segue as normas do Comitê de Ética em Pesquisa (CEP) e a Lei Geral de Proteção de Dados (LGPD — Lei n.º 13.709/2018). [Inserir número do parecer.]</p>
-          <p>Dados individuais não são divulgados. Todas as análises e publicações utilizam dados anonimizados ou agregados.</p>
+          <p>Questões de ética, proteção de dados e acesso são tratadas na página <a href="transparencia.html">Transparência</a>.</p>
         </section>
       </div>
     </div>
